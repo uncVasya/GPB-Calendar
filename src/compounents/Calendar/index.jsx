@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { CELLTOTAL, CURRENT_DAY } from '../consts';
 import {
   CellWrapper, GridWraper, CellDivLine, DayWrapper, RowsInCell,
@@ -14,13 +15,18 @@ function CalendarGrid({ startDay }) {
         cellArray.map((dateItem, i) => (
           <CellWrapper
             key={dateItem.format('DDMMYYYY')}
-            isCurrentMonth={dateItem.format('MMM') === CURRENT_DAY.format('MMM')}
+            isCurrentMonth={moment().isSame(dateItem, 'month')}
+            isCurrentDay={moment().isSame(dateItem, 'day')}
           >
-            <CellDivLine />
+            <CellDivLine
+              isCurrentDay={moment().isSame(dateItem, 'day')}
+            />
             <RowsInCell
               justifyContent="flex-end"
             >
-              <DayWrapper>
+              <DayWrapper
+                isCurrentDay={moment().isSame(dateItem, 'day')}
+              >
                 {dateItem.format('D')}
               </DayWrapper>
             </RowsInCell>
