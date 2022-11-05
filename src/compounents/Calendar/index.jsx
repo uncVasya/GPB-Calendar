@@ -1,23 +1,27 @@
 import React from 'react';
-import { CELLTOTAL } from '../consts';
+import { CELLTOTAL, CURRENT_DAY } from '../consts';
 import {
   CellWrapper, GridWraper, CellDivLine, DayWrapper, RowsInCell,
 } from '../styled';
 
-function CalendarGrid() {
-  const cellArray = [...new Array(CELLTOTAL)];
+function CalendarGrid({ startDay }) {
+  const day = startDay.clone();
+  const cellArray = [...new Array(CELLTOTAL)].map(() => day.add(1, 'day').clone());
 
   return (
     <GridWraper>
       {
-        cellArray.map((el, i) => (
-          <CellWrapper key={i}>
+        cellArray.map((dateItem, i) => (
+          <CellWrapper
+            key={dateItem.format('DDMMYYYY')}
+            isCurrentMonth={dateItem.format('MMM') === CURRENT_DAY.format('MMM')}
+          >
             <CellDivLine />
             <RowsInCell
               justifyContent="flex-end"
             >
               <DayWrapper>
-                {i}
+                {dateItem.format('D')}
               </DayWrapper>
             </RowsInCell>
           </CellWrapper>

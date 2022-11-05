@@ -11,6 +11,7 @@ export const CellWrapper = styled.div`
 min-width: 14.27%;
 height: 150px;
 background-color: #ffffff;
+color: ${(props) => (props.isCurrentMonth ? 'black' : 'grey')};
 `;
 
 export const CellDivLine = styled.div`
