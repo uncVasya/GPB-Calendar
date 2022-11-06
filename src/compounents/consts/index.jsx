@@ -1,9 +1,11 @@
 import moment from 'moment';
 
-export const CELLTOTAL = 42;
 export const CURRENT_DAY = moment();
 
 //* ******* crutch ******** */
+
+export const OPTION_WEEK = moment.weekdaysShort();
+OPTION_WEEK.push(OPTION_WEEK.shift());
 
 export const OPTION_YEAR = [
   { value: '2020', label: '2020' },

@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+// ****-----Calendar_STILES----****//
+
+export const CalendarWrapper = styled.div`
+height: 100vh;
+`;
+
 // ****-----Header_STILES----****//
 export const HeaderWrapper = styled.div`
 
@@ -14,7 +20,16 @@ export const ButtonWrapper = styled.div`
 margin-left: 24px;
 `;
 
-// ****-----Calendar_STILES----****//
+export const WeekWrapper = styled.div`
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+grid-template-rows: repeat(1, 1fr);
+margin-top: 8px;
+grid-gap: 10px;
+text-align: right;
+`;
+
+// ****-----CalendarGrid_STILES----****//
 
 export const GridWraper = styled.div`
 display: grid;
@@ -25,7 +40,7 @@ grid-gap: 10px;
 
 export const CellWrapper = styled.div`
 min-width: 14.27%;
-height: 150px;
+height: 115px;
 background-color: ${(props) => (props.isCurrentDay ? '#e2f7ff' : '#ffffff')};
 color: ${(props) => (props.isCurrentMonth ? 'black' : 'grey')};
 `;
